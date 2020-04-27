@@ -20,7 +20,7 @@ const yelp = require('./routers/yelp.js');
 const facebook = require('./routers/facebook.js')
 
 //mongo database URI string
-const db = require('../config/keys.js').mongo_uri;
+// const db = require('../config/keys.js').mongo_uri;
 
 //passport configuration and initialization
 customStrategy(passport)
@@ -42,8 +42,8 @@ app.use("/facebook", facebook);
 
 
 mongoose
-// .connect(process.env.MONGODB_URI || process.env.MONGO_DB, {
-    .connect(db, {
+    .connect(process.env.MONGODB_URI || process.env.MONGO_DB, {
+        // .connect(db, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true
