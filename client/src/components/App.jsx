@@ -49,36 +49,36 @@ class App extends React.Component {
     //     const decoded = jwt_decode(localStorage.jwtToken);
     //     // Set user and isAuthenticated
     //     this.props.setCurrentUser(decoded);
-
-    render() {
-      return (
-        <div id='app'>
-          <Router>
-            <Switch>
-              <Route path="/sign-in">
-                <SplashPage redirect={this.redirect} />
-                <SignIn />
-              </Route>
-              <Route path="/create-account">
-                <SplashPage />
-                <SignUp />
-              </Route>
-              <Route path="/create-new">
-                <EventWizard />
-              </Route>
-              <Route exact path="/event-editor/:itin_id" component={EventEditor} />
-              <Route exact path="/public/:itin_id" component={PublicViewer} />
-              <Route path="/view-existing">
-                <ViewExisting />
-              </Route>
-              <Route path="/">
-                <SplashPage />
-              </Route>
-            </Switch>
-          </Router>
-        </div>
-      )
-    }
   }
+  render() {
+    return (
+      <div id='app'>
+        <Router>
+          <Switch>
+            <Route path="/sign-in">
+              <SplashPage redirect={this.redirect} />
+              <SignIn />
+            </Route>
+            <Route path="/create-account">
+              <SplashPage />
+              <SignUp />
+            </Route>
+            <Route path="/create-new">
+              <EventWizard />
+            </Route>
+            <Route exact path="/event-editor/:itin_id" component={EventEditor} />
+            <Route exact path="/public/:itin_id" component={PublicViewer} />
+            <Route path="/view-existing">
+              <ViewExisting />
+            </Route>
+            <Route path="/">
+              <SplashPage />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    )
+  }
+}
 
-  export default connect(null, { setCurrentUser, logoutUser })(App);
+export default connect(null, { setCurrentUser, logoutUser })(App);
