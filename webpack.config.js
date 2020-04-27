@@ -1,6 +1,8 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-console.log('path --->', path.resolve(__dirname));
+
+console.log('path ----->', path.resolve(__dirname, '../'))
+
 module.exports = {
     entry: './client/src/index.jsx',
     mode: 'production',
@@ -13,7 +15,7 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [
-        new Dotenv({ path: path.resolve(__dirname, '..', '.env') })
+        new Dotenv({ path: path.resolve(__dirname, './.env') })
     ],
     module: {
         rules: [{
