@@ -13,7 +13,7 @@ module.exports = {
         historyApiFallback: true
     },
     plugins: [
-        new Dotenv()
+        new Dotenv({ path: path.resolve(__dirname, './.env') })
     ],
     module: {
         rules: [{
