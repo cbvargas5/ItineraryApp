@@ -18,8 +18,7 @@ export const registerUser = (userData, history) => dispatch => {
             //     payload: err.response.data
             // })
             alert(JSON.stringify(err.response.data.errorMessage));
-        }
-        );
+        });
 };
 
 // Login -Get User token
@@ -49,6 +48,49 @@ export const loginUser = (userData) => (dispatch) => {
 };
 
 
+// Facebook Login -Get User token
+export const fbAuth = () => (dispatch) => {
+    // console.log('FACEBOOK BUTTON IS CONNECTED TO FB METHOD!')
+    // window.open('https://localhost:3000/facebook/login')
+    // console.log(document.cookie)
+    window.location.assign("https://localhost:3000/facebook/login")
+    console.log(decodeURIComponent(document.cookie))
+
+
+    // axios.get('/facebook/login')
+    //     .then((data) => {
+    //         console.log('connected to facebook!')
+    //     })
+    //     .catch((err) => console.error(err))
+    // axios.post("/users/login", userData)
+    //     .then(res => {
+    //         // Save to local storage
+    //         const { token } = res.data;
+    //         // Set token to local storage
+    //         localStorage.setItem("jwtToken", token);
+    //         // Set token to Auth header
+    //         setAuthToken(token);
+    //         // Decode token to get user data
+    //         const decoded = jwt_decode(token);
+    //         console.log(token);
+    //         // Set current user
+    //         dispatch(setCurrentUser(decoded));
+    //         alert(`Welcome ${decoded.username}!  You have successfully logged in.`);
+    // })
+    // .catch(err => {
+    //     // dispatch({
+    //     //     type: GET_ERRORS,
+    //     //     payload: err.response.data
+    //     // })
+    //     alert(JSON.stringify(err.response.data.errorMessage));
+    // })
+};
+
+
+
+
+
+
 // Set logged in user
 export const setCurrentUser = (decoded) => {
     return {
@@ -63,5 +105,5 @@ export const logoutUser = () => dispatch => {
     localStorage.removeItem("jwtToken");
     // Remove auth header for future requests
     setAuthToken(false);
-    dispatch({type: LOG_OUT});
+    dispatch({ type: LOG_OUT });
 }

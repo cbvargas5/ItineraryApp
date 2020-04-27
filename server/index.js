@@ -1,14 +1,17 @@
-let express = require('express');
-let path = require('path');
-let app = express();
+const express = require('express');
+const path = require('path');
+const app = express();
+const cors = require('cors')
+app.use(cors())
 const mongoose = require("mongoose");
 const passport = require('passport')
 const { customStrategy } = require('../passport-config')
 const FacebookStrategy = require('passport-facebook')
-var https = require('https')
-var fs = require('fs')
+const https = require('https')
+const fs = require('fs')
 
 const port = process.env.PORT || 3000;
+
 
 // server api routes
 const users = require('./routers/users.js');
