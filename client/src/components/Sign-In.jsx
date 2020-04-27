@@ -69,6 +69,7 @@ class ConnectedSignIn extends React.Component {
     this.props.loginUser({ email: response.email, password: response.id });
   }
   render() {
+    console.log(process.env)
     return (
       <div className='account-modal'>
         <Modal show={this.state.showModal} onHide={this.close} {...this.props}
