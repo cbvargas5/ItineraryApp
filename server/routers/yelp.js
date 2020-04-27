@@ -21,6 +21,7 @@ const options = {
 router
     .route('/events', passport.authenticate('jwt', { session: false }))
     .get(passport.authenticate('jwt', { session: false }), async(req, res) => {
+        console.log('query string->', req.query)
         await fetch(`${yelp_url}/events?${req._parsedUrl.query}`, options)
             .then((apiResponse) => apiResponse.json())
             .then((data) => res.status(200).send(data))

@@ -78,19 +78,6 @@ if (process.env.NODE_ENV === 'production') {
         .listen(port, () => console.log(`Secured Server is listening on port ${port}`))
 }
 
-//if not deployed and without SSL, comment out the following code:
-// app.listen(port, (err) => {
-//   if (err) {
-//       console.log(err);
-//   } else {
-//       console.log(`Unsecured Server is listening on port ${port}`);
-//   }
-// })
-
-
-
-
-
 
 
 /**
