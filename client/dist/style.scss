@@ -190,14 +190,13 @@ $muted-body-color: rgb(82, 165, 230);
 }
 
 .itin-item{
-    display: inline-block;
-    width: 40%;
+    width: 420px;
     height: max-content;
     padding: 30px;
     background-color: white;
     font-family: $body-font;
-    margin: 15px;
     border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .itin-item:hover{
@@ -205,6 +204,13 @@ $muted-body-color: rgb(82, 165, 230);
     color: white;
     cursor: pointer;
 }
+
+.itin-item-list{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
 
 .v-e-nav{
     width: 100%;
@@ -278,4 +284,33 @@ $muted-body-color: rgb(82, 165, 230);
 
 .result-container{
     display: flex;
+}
+
+.toast{
+    z-index: 5;
+    position: absolute;
+    top: 15%;
+    height: max-content;
+}
+
+.toast-header{
+    font-family: $body-font;
+    font-size: 14px;
+    float: right;
+    width: 100%;
+    border: none;
+    margin-bottom: 5px;
+}
+
+.toast-body{
+    padding-top: 10px;
+}
+
+.toast-message{
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+#calendar-export{
+    margin: 20px;
 }

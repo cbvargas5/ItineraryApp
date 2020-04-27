@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './components/App.jsx';
-import store from './store/Index.js';
-import { signIn, saveItinerary, saveItineraryDB, saveItineraryDBById } from './actions/index.js';
+import store from './store/index.js';
+import { signIn, saveItinerary, saveItineraryDB, saveItineraryDBById, addEvent, clearCurrentItinerary } from './actions/index.js';
 import { Provider } from "react-redux";
 
 window.store = store;
@@ -10,6 +10,8 @@ window.signIn = signIn;
 window.saveItinerary = saveItinerary;
 window.saveItineraryDB = saveItineraryDB;
 window.saveItineraryDBById = saveItineraryDBById;
+window.addEvent = addEvent;
+window.clearCurrentItinerary = clearCurrentItinerary;
 
 import { setCurrentUser, logoutUser } from './actions/auth.js';
 import setAuthToken from './utils/setAuthToken.js';
@@ -31,7 +33,7 @@ if (localStorage.jwtToken) {
     if (decoded.exp < currentTime) {
         //Logout the user
         store.dispatch(logoutUser());
-        //window.store.dispatch(clearCurrentProfile());
+        store.dispatch(clearCurrentItinerary());
 
         //Redirect to login
         window.location.href = "/sign-in";

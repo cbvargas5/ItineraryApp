@@ -45,7 +45,7 @@ function itineraryReducer(state = initialState, action) {
   if (action.type === CLEAR_CURRENT_ITIN) {
     return {
       ...state,
-      itinerary: null
+      itinerary: {}
     }
   }
 

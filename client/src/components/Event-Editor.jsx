@@ -13,8 +13,13 @@ class EventEditor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            toggle: true
+            itinerary: {}
         }
+    }
+
+    componentDidUpdate(){
+        console.log('Editor has been updated!');
+        console.log('State--->', this.state.itinerary);
     }
 
     componentDidMount() {
@@ -25,20 +30,22 @@ class EventEditor extends React.Component {
         if (this.props.match.params.itin_id) {
             this.props.getItineraryById(this.props.match.params.itin_id);
         }
+
+        this.setState({
+            itinerary: this.props.itinerary
+        })
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (nextProps.profile.profile === null && this.props.profile.loading) {
-    //         this.props.history.push("/not-found");
-    //     }
-    // }
 
     render() {
+        console.log('Editor is re-rendering!');
 
         let { loading, itinerary } = this.props.itinerary;
 
         console.log(loading);
         console.log(itinerary);
+
+        var newEvents = {...this.state.itinerary};
 
         return (
             <div id='e-e-c'>
@@ -47,7 +54,7 @@ class EventEditor extends React.Component {
                 {itinerary === null || loading ? <Spinner animation="grow" variant="primary" /> : (
                     <div id='event-editor'>
                         <SidebarMenu />
-                        <EventEditorCalendar />
+                        <EventEditorCalendar itinerary={newEvents}/>
                     </div>
                 )}
 

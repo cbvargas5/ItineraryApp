@@ -10,7 +10,7 @@ const EventResults = props => (
             <div id='results'>
                 {props.events ? props.events.map((event) => (
                     <EventResultsItem event={event} />
-                )) : "NOTHING"}
+                )) : "No Results Found"}
             </div>
         </center>
     </div>

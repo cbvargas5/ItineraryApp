@@ -44,11 +44,11 @@ class ConnectedEventWizard2 extends React.Component {
         event.preventDefault();
         var collaborator = document.getElementById('collab-name').value;
         var currCollabs = this.state.collaborators;
-        var collab = {
-            name: collaborator,
-            email: 'test'
-        };
-        currCollabs.push(collab);
+        // var collab = {
+        //     name: collaborator,
+        //     email: 'test'
+        // };
+        currCollabs.push(collaborator);
 
         this.setState({
             collaborators: currCollabs
@@ -81,25 +81,32 @@ class ConnectedEventWizard2 extends React.Component {
         event.preventDefault();
         var saved = this.props.itinerary;
         var payload = this.state;
-        payload.user = this.props.user.id;
-        console.log(payload.user);
+        //payload.user = this.props.user.id;
+        //console.log(payload.user);
         // If nothing has been saved to the store or store has not been sent to DB
-        console.log('payload in component-->', payload);
-        if ((saved === null) || (!(saved._id))) {
-            // Save state to store & send info to DB
-            this.props.saveItineraryDB(payload);
-        }
-        else {
-            this.props.saveItineraryDBById(payload);
-        }
-
+        // console.log('payload in component-->', payload);
+        // if ((saved === null) || (!(saved._id))) {
+        //     // Save state to store & send info to DB
+        //     this.props.saveItineraryDB(payload);
+        // }
+        // else {
+        //     this.props.saveItineraryDBById(payload);
+        // }
+        this.props.saveItineraryDB(payload)
+            .then((result) => {
+                this.props.history.push(`/event-editor/${result.data._id}`)
+                alert('Your Itinerary was created!  You can now start editing your schedule and adding events.')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
 
     render() {
         var collaborators = this.state.collaborators;
         console.log('state--->', this.state.collaborators);
         return (
-            <div className="e-w2 e-w" id="add-collaborators">
+            <div className="e-w2 e-w" id="add-collaborators" >
                 <Form>
                     <div className='form-item'>
                         <InputGroup className="mb-3">
@@ -118,11 +125,11 @@ class ConnectedEventWizard2 extends React.Component {
                     </div>
                     <div className='form-item form-button'>
                         <Button variant="light" type="submit" onClick={this.handleSave}>
-                            Save Progress
+                            Save and Continue
                         </Button>
-                        <Button variant="success" type="submit" onClick={this.handleNext}>
+                        {/* <Button variant="success" type="submit" onClick={this.handleNext}>
                             Onward!
-                        </Button>
+                        </Button> */}
                     </div>
                 </Form>
             </div>

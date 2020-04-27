@@ -6,6 +6,8 @@ import SignUp from './Sign-Up.jsx';
 import EventWizard from './Event-Wizard.jsx';
 import EventEditor from './Event-Editor.jsx';
 import ViewExisting from './View-Existing.jsx';
+import PublicViewer from './public-viewer/PublicViewer.jsx'
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -48,48 +50,35 @@ class App extends React.Component {
     //     // Set user and isAuthenticated
     //     this.props.setCurrentUser(decoded);
 
-
-    //     // Check for expired token
-    //     const currentTime = Date.now() / 1000;
-    //     if (decoded.exp < currentTime) {
-    //         //Logout the user
-    //         this.props.logoutUser();
-    //         //window.store.dispatch(clearCurrentProfile());
-
-    //         //Redirect to login
-    //         window.location.href = "/sign-in";
-    //     }
-    // }
+    render() {
+      return (
+        <div id='app'>
+          <Router>
+            <Switch>
+              <Route path="/sign-in">
+                <SplashPage redirect={this.redirect} />
+                <SignIn />
+              </Route>
+              <Route path="/create-account">
+                <SplashPage />
+                <SignUp />
+              </Route>
+              <Route path="/create-new">
+                <EventWizard />
+              </Route>
+              <Route exact path="/event-editor/:itin_id" component={EventEditor} />
+              <Route exact path="/public/:itin_id" component={PublicViewer} />
+              <Route path="/view-existing">
+                <ViewExisting />
+              </Route>
+              <Route path="/">
+                <SplashPage />
+              </Route>
+            </Switch>
+          </Router>
+        </div>
+      )
+    }
   }
 
-  render() {
-    return (
-      <div id='app'>
-        <Router>
-          <Switch>
-            <Route path="/sign-in">
-              <SplashPage redirect={this.redirect} />
-              <SignIn />
-            </Route>
-            <Route path="/create-account">
-              <SplashPage />
-              <SignUp />
-            </Route>
-            <Route path="/create-new">
-              <EventWizard />
-            </Route>
-            <Route exact path="/event-editor/:itin_id" component={EventEditor} />
-            <Route path="/view-existing">
-              <ViewExisting />
-            </Route>
-            <Route path="/">
-              <SplashPage />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
-    )
-  }
-}
-
-export default connect(null, { setCurrentUser, logoutUser })(App);
+  export default connect(null, { setCurrentUser, logoutUser })(App);

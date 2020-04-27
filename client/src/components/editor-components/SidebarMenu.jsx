@@ -7,12 +7,13 @@ import moment from 'moment';
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        saveItinerary: (payload) => dispatch(saveItinerary(payload))
+        saveItinerary: (payload) => dispatch(saveItinerary(payload)),
+        addEvent: (payload) => dispatch(addEvent(payload))
     };
 }
 
 const mapStateToProps = (state) => {
-    return { events: state.itinerary.itinerary.events, date: state.itinerary.itinerary.date };
+    return { events: state.itinerary.itinerary.events, start: state.itinerary.itinerary.start, _id: state.itinerary.itinerary._id };
 };
 
 class ConnectedSidebarMenu extends React.Component {
@@ -21,11 +22,11 @@ class ConnectedSidebarMenu extends React.Component {
         this.state = {
             title: '',
             location: '',
-            startTime: "0:00",
-            endTime: "0:00",
+            startTime: "11:00",
+            endTime: "13:00",
             notes: '',
             events: [],
-            date: ''
+            start: ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleTimeChange = this.handleTimeChange.bind(this);
@@ -51,7 +52,7 @@ class ConnectedSidebarMenu extends React.Component {
 
     saveEvent(event){
         event.preventDefault();
-        var day = moment(this.props.date);
+        var day = moment(this.props.start);
         var formattedDate = day.toISOString();
         var newEvent = {
             title: this.state.title,
@@ -59,7 +60,8 @@ class ConnectedSidebarMenu extends React.Component {
             startTime: this.state.startTime,
             endTime: this.state.endTime,
             notes: this.state.notes,
-            date: formattedDate
+            start: formattedDate,
+            votes: []
         }
 
         var payload = {
@@ -67,8 +69,11 @@ class ConnectedSidebarMenu extends React.Component {
         }
 
         payload.events.push(newEvent);
-        console.log('payload--->', payload);
-        this.props.saveItinerary(payload);
+
+        console.log("sidebar payload --->", payload);
+
+        this.props.addEvent(newEvent, payload)
+        // this.props.saveItinerary(payload);
 
         this.setState({
             events: payload.events,
@@ -76,7 +81,8 @@ class ConnectedSidebarMenu extends React.Component {
             location: '',
             startTime: "0:00",
             endTime: "0:00",
-            notes: ''
+            notes: '',
+            date: formattedDate
         })
     }
 

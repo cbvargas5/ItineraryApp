@@ -23,8 +23,7 @@ const ItinerarySchema = new Schema({
     events: [
         {
             title: {
-                type: String,
-                required: true
+                type: String
             },
             location: {
                 type: String,
@@ -40,7 +39,18 @@ const ItinerarySchema = new Schema({
             },
             notes: {
                 type: String
-            }
+            },
+            votes: [
+                {
+                    user: {
+                        type: Schema.Types.ObjectId,
+                        ref: "users"
+                    },
+                    vote: {
+                        type: Boolean
+                    }
+                }
+            ]
         }
     ],
     collaborators: {

@@ -180,20 +180,25 @@
 }
 
 .itin-item {
-  display: inline-block;
-  width: 40%;
+  width: 420px;
   height: max-content;
   padding: 30px;
   background-color: white;
   font-family: "Glegoo", serif;
-  margin: 15px;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .itin-item:hover {
   background-color: #605f5e;
   color: white;
   cursor: pointer;
+}
+
+.itin-item-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
 }
 
 .v-e-nav {
@@ -268,6 +273,35 @@
 
 .result-container {
   display: flex;
+}
+
+.toast {
+  z-index: 5;
+  position: absolute;
+  top: 15%;
+  height: max-content;
+}
+
+.toast-header {
+  font-family: "Glegoo", serif;
+  font-size: 14px;
+  float: right;
+  width: 100%;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.toast-body {
+  padding-top: 10px;
+}
+
+.toast-message {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+#calendar-export {
+  margin: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

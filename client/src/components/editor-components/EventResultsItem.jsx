@@ -5,8 +5,15 @@ import { connect } from "react-redux";
 
 
 const mapStateToProps = (state) => {
-    return { events: state.itinerary.itinerary.events, date: state.itinerary.itinerary.date };
+    return { events: state.itinerary.itinerary.events, date: state.itinerary.itinerary.date, start: state.itinerary.itinerary.start };
 };
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        saveItinerary: (payload) => dispatch(saveItinerary(payload)),
+        addEvent: (payload) => dispatch(addEvent(payload))
+    };
+}
 
 function ConnectedEventResults(props) {
 
@@ -36,16 +43,26 @@ function ConnectedEventResults(props) {
         // console.log('start-->', startTime);
         // console.log('end-->', endTime);
 
+        var completeLocation = `${location.display_address[0]} ${location.display_address[1]}`
+        
         var newEvent = {
             title: name,
-            location: location,
+            location: completeLocation,
+            image: image_url,
             notes: description,
             startTime: startTime,
-            endTime: endTime,
-            date: props.date
+            endTime: endTime
         }
+        
+        console.log('newEvent--->', newEvent);
+        var payload = {
+            events: props.events
+        }
+        console.log('payload--->', payload);
 
-        console.log('new--->', newEvent);
+        payload.events.push(newEvent);
+        props.addEvent(newEvent, payload)
+
     }
 
     return (
@@ -68,5 +85,5 @@ function ConnectedEventResults(props) {
     )
 }
 
-var EventResults = connect(mapStateToProps)(ConnectedEventResults);
+var EventResults = connect(mapStateToProps, mapDispatchToProps)(ConnectedEventResults);
 export default EventResults;
