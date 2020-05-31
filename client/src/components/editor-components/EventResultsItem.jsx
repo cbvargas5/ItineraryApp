@@ -36,13 +36,6 @@ function ConnectedEventResults(props) {
             endTime = endHour.toString() + endTime.slice(2);
         }
 
-        // console.log('start-->', startHour);
-        // console.log('end-->', endHour);
-
-        // console.log('time-->', time);
-        // console.log('start-->', startTime);
-        // console.log('end-->', endTime);
-
         var completeLocation = `${location.display_address[0]} ${location.display_address[1]}`
         
         var newEvent = {

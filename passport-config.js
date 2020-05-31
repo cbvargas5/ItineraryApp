@@ -8,9 +8,6 @@ const jsonwebtoken = require('jsonwebtoken');
 const PUB_KEY = fs.readFileSync(path.join(__dirname, '/publicKey.pem'), 'utf8')
 const PRIV_KEY = fs.readFileSync(path.join(__dirname, '/privateKey.pem'), 'utf8', 'utf8');
 
-// const PUB_KEY = fs.readFileSync(path.join(__dirname, '/config/publicKey.pem'), 'utf8')
-// const PRIV_KEY = fs.readFileSync(path.join(__dirname, '/config/privateKey.pem'), 'utf8', 'utf8');
-
 const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: PUB_KEY
@@ -39,7 +36,6 @@ const issueToken = (user) => {
 module.exports.issueToken = issueToken
 module.exports.customStrategy = (passport) => {
     passport.use(new JwtStrategy(options, (payload, done) => {
-        //might change from _id to email
         User.findOne({ _id: payload.id })
             .then((user) => {
                 user ? done(null, user) : done(null, false)

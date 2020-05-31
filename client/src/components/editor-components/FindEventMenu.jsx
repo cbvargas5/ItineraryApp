@@ -40,7 +40,7 @@ class FindEventMenu extends React.Component {
 
 
     let queryString = `/yelp/events?limit=5${categoryQuery}${locationQuery}${freeQuery}&start_date=${startDate}`;
-    //let queryString = `/yelp/events?limit=5&categories=music,film`;
+    //let queryString = `/yelp/events?limit=5&categories=music,film`; <--- sample
 
     if (searchText || locationText) {
       axios.get(queryString)
@@ -60,7 +60,6 @@ class FindEventMenu extends React.Component {
     this.setState({ [event.target.name]: event.target.value }, () => {
       this.debouncedSearch();
     });
-    //console.log(this.state[event.target.name]);
   }
 
   freeToggleChange = event => {
