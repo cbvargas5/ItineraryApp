@@ -5,6 +5,8 @@
 
 Night Out is a ReactJS application that allows users to collaborately plan their next Night Out with their friends.
 
+Try it yourself: https://the-nightout-app.herokuapp.com/
+
 ## Video Demo
 
 Coming Soon!
