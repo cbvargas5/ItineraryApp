@@ -3,7 +3,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/cbvargas5/ItineraryApp)
 ![GitHub contributors](https://img.shields.io/github/contributors/cbvargas5/ItineraryApp)
 
-Night Out is a ReactJS application that allows users to collaborately plan their next Night Out with their friends.
+Night Out is a ReactJS application that allows users to collaboratively plan their next Night Out with their friends.
 
 Try it yourself: https://the-nightout-app.herokuapp.com/
 
