@@ -3,7 +3,7 @@
 ![GitHub repo size](https://img.shields.io/github/repo-size/cbvargas5/ItineraryApp)
 ![GitHub contributors](https://img.shields.io/github/contributors/cbvargas5/ItineraryApp)
 
-Night Out is a ReactJS application that allows users to collaboratively plan their next Night Out with their friends.
+NightOut is a ReactJS application that allows users to collaboratively plan their next Night Out with their friends.
 
 Try it yourself: https://the-nightout-app.herokuapp.com/
 
@@ -19,7 +19,7 @@ Coming Soon!
 
 ## Running
 
-To get Night Out up and running, follow these steps:
+To get NightOut up and running, follow these steps:
 
 ```
 run command: npm i
@@ -51,8 +51,6 @@ Use "Find Event" section to use Yelp API to find existing events in your area
 
 ```
 
-Add run commands and examples you think users will find useful. Provide an options reference for bonus points!
-
 ## Original Team
 
 Brian Vargas - https://github.com/cbvargas5
@@ -62,7 +60,7 @@ Stacey Ng - https://github.com/staceycng
 Lee McHale - https://github.com/leemch
 
 ## Contributing
-To contribute to Ethereum Wallet, follow these steps:
+To contribute to NightOut, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
