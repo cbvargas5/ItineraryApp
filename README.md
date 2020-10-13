@@ -17,9 +17,9 @@ Coming Soon!
 ![Image of Creator]( https://drive.google.com/thumbnail?id=1-CkTrW5X4gpM3HulwpJwtUYsl_VF_FAy)
 
 
-## Installing
+## Running
 
-To install Ethereum Wallet, follow these steps:
+To get Night Out up and running, follow these steps:
 
 ```
 run command: npm i
